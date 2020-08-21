@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  coreUrl: 'http://10.248.82.60:8080/diskor/core/api/prod/',
+  spUrl: 'http://10.248.82.60:8080/diskor/int/asoup3/sp/'
 };
 
 /*

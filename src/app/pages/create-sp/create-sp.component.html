@@ -1,0 +1,40 @@
+<div class="row pt-5">
+  <div class="col-10 offset-1 shadow p-0">
+    <nav class="navbar navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">Создание хранимой процедуры</a>
+    </nav>
+    <form [formGroup]="form" (ngSubmit)="submitForm()" id="create-sp-form" class="p-4">
+        <div class="form-group">
+          <label>Компонент источника информации:</label>
+          <select formControlName="idCompAsSourceInf" name="compAsSourceInf" class="form-control">
+            <option *ngFor="let item of arr" value="{{item.id}}">{{item.name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Техническое имя:</label>
+          <input formControlName="techName" name="techName" type="text" class="form-control" value="" >
+        </div>
+
+        <div class="form-group">
+          <label>Описание:</label>
+          <textarea formControlName="description" name="description" class="form-control" rows="5"></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-6">
+            <label>Уровень:</label>
+            <select formControlName="level" name="level" class="form-control">
+              <option *ngFor="let itm of levels" value="{{itm.id}}">{{itm.name}}</option>
+            </select>
+          </div>
+
+          <div class="form-group col-6" *ngIf="this.form.value.level.substr(0,3) == 'skd'">
+            <label>Дорога:</label>
+            <input formControlName="funcDor" type="text" class="form-control" name="road">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+  </div>
+</div>

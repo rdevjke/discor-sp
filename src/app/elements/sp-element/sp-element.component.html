@@ -1,0 +1,12 @@
+<div class="card m-0 p-0">
+  <div class="card-header">
+    {{data.id}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{data.techName}}t</h5>
+    <p class="card-text">{{data.description}}</p>
+
+    <button class="btn btn-primary mr-1" [routerLink]="['/sp', data.id]">Изменить</button>
+    <button class="btn btn-danger" (click)="remove()">Удалить</button>
+  </div>
+</div>
