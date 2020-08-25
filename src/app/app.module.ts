@@ -12,6 +12,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SpElementComponent } from './elements/sp-element/sp-element.component';
 import { WorkSpComponent } from './pages/work-sp/work-sp.component';
 import { MainComponent } from './pages/work-sp-pages/main/main.component';
+import { CreateInputParamsComponent } from './pages/create-input-params/create-input-params.component';
+import { InputParamComponent } from './elements/input-param/input-param.component';
+import { CreateOutputParamsComponent } from './pages/create-output-params/create-output-params.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { MainComponent } from './pages/work-sp-pages/main/main.component';
     CreateSpComponent,
     SpElementComponent,
     WorkSpComponent,
-    MainComponent
+    MainComponent,
+    CreateInputParamsComponent,
+    InputParamComponent,
+    CreateOutputParamsComponent
   ],
   imports: [
     BrowserModule,

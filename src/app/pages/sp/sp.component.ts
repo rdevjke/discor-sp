@@ -10,7 +10,8 @@ import { ISpDto } from 'src/app/models/sp.model';
 })
 export class SpComponent implements OnInit {
 
-  constructor(private sp: SpService,
+  constructor(
+      private sp: SpService,
       private detectRef: ChangeDetectorRef
     ) { }
 

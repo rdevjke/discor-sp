@@ -3,7 +3,11 @@
     <li ngbNavItem="1">
       <a ngbNavLink>Описание процедуры</a>
       <ng-template ngbNavContent>
-        <app-main></app-main>
+
+        <app-main
+          [spStructureInput]="spStructure"
+        ></app-main>
+
       </ng-template>
     </li>
     <li ngbNavItem="2">

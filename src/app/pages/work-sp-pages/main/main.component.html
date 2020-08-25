@@ -2,21 +2,71 @@
   <ngb-tabset type="pills">
     <ngb-tab title="Входные параметры">
       <ng-template ngbTabContent>
-        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
-        master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
-        dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
-        iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+
+        <app-create-input-params></app-create-input-params>
+
+        <!-- <ng-container *ngIf="spStructureInput != undefined">
+          <p  *ngFor="let item of spStructureInput.spPart.inputParams">{{item.nameInputSpParam}}</p>
+        </ng-container> -->
+
+        <table class="table" *ngIf="spStructureInput != undefined">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Имя</th>
+              <th scope="col">Техническое имя</th>
+              <th scope="col">Тип</th>
+              <th scope="col">Действия</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of spStructureInput.spPart.inputParams; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{item.nameInputSpParam}}</td>
+              <td>{{item.techNameInputSpParam}}</td>
+              <td>{{item.dataType}}</td>
+              <td>
+                <button class="btn btn-danger" (click)="remove(item.id, 'input')">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
       </ng-template>
     </ngb-tab>
     <ngb-tab>
       <ng-template ngbTabTitle>Выходные параметры</ng-template>
-      <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-        <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
-        craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl
-        cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia
-        yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean
-        shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero
-        sint qui sapiente accusamus tattooed echo park.</p>
+      <ng-template ngbTabContent>
+
+        <app-create-output-params></app-create-output-params>
+
+        <table class="table" *ngIf="spStructureInput != undefined">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Имя</th>
+              <th scope="col">Техническое имя</th>
+              <th scope="col">Тип</th>
+              <th scope="col">Действия</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of spStructureInput.spPart.outputParams; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{item.nameOutputSpParam}}</td>
+              <td>{{item.techNameOutputSpParam}}</td>
+              <td>{{item.dataType}}</td>
+              <td>
+                <button class="btn btn-danger" (click)="remove(item.id, 'output')">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
       </ng-template>
     </ngb-tab>
     <ngb-tab title="???">

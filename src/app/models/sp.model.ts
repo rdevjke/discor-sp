@@ -47,7 +47,7 @@ interface ICursors {
   presentations?: IPresentation
 }
 
-interface ISpCursorDto {
+export interface ISpCursorDto {
   id?: number,
   fkSp?: number,
   type?: string,
@@ -71,7 +71,7 @@ interface IPresentation {
   presentationInfo?: ISpPresentationDto
 }
 
-interface ISpInputParamDto {
+export interface ISpInputParamDto {
   corTip?: string,
   dataType?: string,
   dateCreate?: string,
@@ -82,7 +82,7 @@ interface ISpInputParamDto {
   techNameInputSpParam?: string
 }
 
-interface ISpOutputParamDto {
+export interface ISpOutputParamDto {
   id?: number,
   fkSp?: number,
   techNameOutputSpParam?: string,
