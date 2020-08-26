@@ -23,8 +23,7 @@ export class SpComponent implements OnInit {
 
   removeSp(id: string){
     this.sp.deleteSp(id).subscribe(
-      response=>{
-        console.log(response)
+      ()=>{
         this.fetchSp()
       },
       err=>{
@@ -37,7 +36,6 @@ export class SpComponent implements OnInit {
     this.sp.getAllSp().subscribe(
       response=>{
         this.spArray = response
-        console.log(response)
       }
     )
   }

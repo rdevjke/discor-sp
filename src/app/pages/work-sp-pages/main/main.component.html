@@ -36,6 +36,7 @@
 
       </ng-template>
     </ngb-tab>
+    <!--  -->
     <ngb-tab>
       <ng-template ngbTabTitle>Выходные параметры</ng-template>
       <ng-template ngbTabContent>
@@ -69,9 +70,33 @@
 
       </ng-template>
     </ngb-tab>
-    <ngb-tab title="???">
+    <!--  -->
+    <ngb-tab title="Курсоры">
       <ng-template ngbTabContent>
-        <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio. Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+
+        <app-create-cursor></app-create-cursor>
+
+        <select class="" (change)="test($event.target.value)">
+          <option>Выберите курсор...</option>
+          <option  *ngFor="let cursor of spStructureInput.cursors" value="{{cursor.cursorInfo.id}}">{{cursor.cursorInfo.name}}</option>
+        </select>
+
+        <p>{{cursor1}}</p>
+
+        <nav ngbNav #nav="ngbNav" class="nav-tabs">
+          <ng-container ngbNavItem *ngFor="let cursor of spStructureInput.cursors">
+            <a ngbNavLink>{{cursor.cursorInfo.name}}</a>
+            <ng-template ngbNavContent>
+              {{cursor.cursorInfo.id}}
+              <app-cursor
+                [cursor]="cursor"
+              ></app-cursor>
+            </ng-template>
+          </ng-container>
+        </nav>
+
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
       </ng-template>
     </ngb-tab>
   </ngb-tabset>

@@ -44,6 +44,7 @@ export class WorkSpComponent implements OnInit, OnDestroy {
     this.spService.getSpById(this.id).subscribe(
       response=>{
         this.spStructure = response;
+        console.log(response)
       }
     )
   }

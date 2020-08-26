@@ -41,7 +41,7 @@ interface ISpPart{
   spInfo?: ISpDto
 }
 
-interface ICursors {
+export interface ICursors {
   cursorColumns?: ISpCursorColumnStructureForCursorDto,
   cursorInfo?: ISpCursorDto,
   presentations?: IPresentation
@@ -93,7 +93,7 @@ export interface ISpOutputParamDto {
   corTip?: string
 }
 
-interface ISpCursorColumnDto {
+export interface ISpCursorColumnDto {
   id?: number,
   fkSpCursor?: number,
   fkSpCursorColumn?: number,

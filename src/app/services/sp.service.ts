@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { ISpDto, ISpInputParamDto, ISpStructureDto, ISpOutputParamDto } from '../models/sp.model';
+import { ISpDto, ISpInputParamDto, ISpStructureDto, ISpOutputParamDto, ISpCursorDto, ISpCursorColumnDto } from '../models/sp.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -49,5 +49,13 @@ export class SpService {
     return this.http.post(this.url+`api/sp/output/delete`,'', {
       params: new HttpParams().set('id', id)
     })
+  }
+
+  postCursor(data: ISpCursorDto){
+    return this.http.post(this.url+`api/sp/cursor/add`, data);
+  }
+
+  postCursorColumn(data: ISpCursorColumnDto){
+    return this.http.post(this.url+`api/sp/cursor/column/add`, data);
   }
 }

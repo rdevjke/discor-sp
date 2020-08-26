@@ -15,6 +15,9 @@ import { MainComponent } from './pages/work-sp-pages/main/main.component';
 import { CreateInputParamsComponent } from './pages/create-input-params/create-input-params.component';
 import { InputParamComponent } from './elements/input-param/input-param.component';
 import { CreateOutputParamsComponent } from './pages/create-output-params/create-output-params.component';
+import { CreateCursorComponent } from './pages/create-cursor/create-cursor.component';
+import { CursorComponent } from './elements/cursor/cursor.component';
+import { CreateCursorColumnComponent } from './pages/create-cursor-column/create-cursor-column.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { CreateOutputParamsComponent } from './pages/create-output-params/create
     MainComponent,
     CreateInputParamsComponent,
     InputParamComponent,
-    CreateOutputParamsComponent
+    CreateOutputParamsComponent,
+    CreateCursorComponent,
+    CursorComponent,
+    CreateCursorColumnComponent
   ],
   imports: [
     BrowserModule,

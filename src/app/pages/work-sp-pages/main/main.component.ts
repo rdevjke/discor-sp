@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ISpStructureDto } from 'src/app/models/sp.model';
+import { ISpStructureDto, ICursors } from 'src/app/models/sp.model';
 import { SpService } from 'src/app/services/sp.service';
 import { TestFormDataService } from 'src/app/services/test-form-data.service';
 import { Subscription, Observable } from 'rxjs';
@@ -10,6 +10,8 @@ import { Subscription, Observable } from 'rxjs';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+
+  cursor1: string
 
   @Input() spStructureInput: ISpStructureDto
 
@@ -40,7 +42,11 @@ export class MainComponent implements OnInit {
         alert(err.error.message);
       }
     )
+  }
 
+  test(id: string){
+    this.cursor1 = id;
+    console.log(id)
   }
 
 }
