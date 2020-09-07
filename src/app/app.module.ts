@@ -18,6 +18,7 @@ import { CreateOutputParamsComponent } from './pages/create-output-params/create
 import { CreateCursorComponent } from './pages/create-cursor/create-cursor.component';
 import { CursorComponent } from './elements/cursor/cursor.component';
 import { CreateCursorColumnComponent } from './pages/create-cursor-column/create-cursor-column.component';
+import {DialogModule} from 'simcusdi';
 
 @NgModule({
   declarations: [
@@ -33,14 +34,15 @@ import { CreateCursorColumnComponent } from './pages/create-cursor-column/create
     CreateOutputParamsComponent,
     CreateCursorComponent,
     CursorComponent,
-    CreateCursorColumnComponent
+    CreateCursorColumnComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

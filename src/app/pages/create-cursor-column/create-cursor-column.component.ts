@@ -39,7 +39,7 @@ export class CreateCursorColumnComponent implements OnInit {
 
   submit(value:ISpCursorColumnDto){
     value.virtCol = false;
-    value.fkSpCursor = this.fkCursor
+    value.fkSpCursor = this.fkCursor;
     console.log(value);
     this.spService.postCursorColumn(value).subscribe(
       ()=>{

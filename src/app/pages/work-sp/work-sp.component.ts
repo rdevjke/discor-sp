@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ISpStructureDto } from 'src/app/models/sp.model';
 import { SpService } from 'src/app/services/sp.service';
@@ -13,11 +13,15 @@ import { Subscription } from 'rxjs';
 export class WorkSpComponent implements OnInit, OnDestroy {
 
   sub: Subscription
+  active = '1'
+  spStructure: ISpStructureDto
+  id: string
 
   constructor(
     private route: ActivatedRoute,
     private spService: SpService,
-    private testNotificated: TestFormDataService
+    private testNotificated: TestFormDataService,
+    private cd: ChangeDetectorRef
   ) {
     this.sub = this.testNotificated.onSubscrube().subscribe(
       ()=>{
@@ -25,10 +29,6 @@ export class WorkSpComponent implements OnInit, OnDestroy {
       }
     )
   }
-
-  active = '1'
-  spStructure: ISpStructureDto
-  id: string
 
   ngOnInit(): void {
     this.route.params.subscribe(

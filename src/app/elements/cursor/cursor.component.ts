@@ -15,4 +15,8 @@ export class CursorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  remove(): void{
+
+  }
+
 }

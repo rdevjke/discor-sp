@@ -58,7 +58,7 @@ export interface ISpCursorDto {
   corTip?: string
 }
 
-interface ISpCursorColumnStructureForCursorDto {
+export interface ISpCursorColumnStructureForCursorDto {
   cursorColumnInfo?: ISpCursorColumnDto,
   functionFilterCursorColumn?: IFunctionFilterCursorColumnDto,
   functionFormCursorColumn?: IFunctionFormCursorColumnDto
@@ -97,6 +97,7 @@ export interface ISpCursorColumnDto {
   id?: number,
   fkSpCursor?: number,
   fkSpCursorColumn?: number,
+  func?: IFunctionFormCursorColumnDto,
   virtCol?: boolean,
   pos?: number,
   techName?: string,
@@ -117,7 +118,7 @@ interface IFunctionFilterCursorColumnDto {
   id?: number
 }
 
-interface IFunctionFormCursorColumnDto {
+export interface IFunctionFormCursorColumnDto {
   id?: number,
   fkSpCursorColumn?: number,
   funcVirtSpCursorColumn?: string,

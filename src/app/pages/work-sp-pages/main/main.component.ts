@@ -3,6 +3,8 @@ import { ISpStructureDto, ICursors } from 'src/app/models/sp.model';
 import { SpService } from 'src/app/services/sp.service';
 import { TestFormDataService } from 'src/app/services/test-form-data.service';
 import { Subscription, Observable } from 'rxjs';
+import { DialogService } from 'simcusdi';
+import { CreateCursorComponent } from '../../create-cursor/create-cursor.component';
 
 @Component({
   selector: 'app-main',
@@ -17,7 +19,8 @@ export class MainComponent implements OnInit {
 
   constructor(
     private spService: SpService,
-    private noticeService: TestFormDataService
+    private noticeService: TestFormDataService,
+    private dialog: DialogService
   ) { }
 
   ngOnInit(): void {
@@ -44,9 +47,13 @@ export class MainComponent implements OnInit {
     )
   }
 
-  test(id: string){
-    this.cursor1 = id;
-    console.log(id)
+  openCreateCursorDialog(){
+    const obj ={
+      data: 'dsadasda'
+    }
+    this.dialog.open(CreateCursorComponent,obj).afterClosed.subscribe(()=>{
+
+    });
   }
 
 }

@@ -56,6 +56,8 @@ export class SpService {
   }
 
   postCursorColumn(data: ISpCursorColumnDto){
-    return this.http.post(this.url+`api/sp/cursor/column/add`, data);
+    return this.http.post(this.url+`api/sp/cursor/column/add`, data, {
+      params: new HttpParams().set('funcVirtSpCursorColumn', ' ')
+    });
   }
 }
