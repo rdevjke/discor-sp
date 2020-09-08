@@ -4,6 +4,7 @@ import { ISpCursorDto } from 'src/app/models/sp.model';
 import { SpService } from 'src/app/services/sp.service';
 import { ActivatedRoute } from '@angular/router';
 import { TestFormDataService } from 'src/app/services/test-form-data.service';
+import { DialogRef, Data } from 'simcusdi';
 
 @Component({
   selector: 'app-create-cursor',
@@ -13,11 +14,14 @@ import { TestFormDataService } from 'src/app/services/test-form-data.service';
 export class CreateCursorComponent implements OnInit {
 
   form: FormGroup
+  fkSp: string
 
   constructor(
     private spService: SpService,
     private route: ActivatedRoute,
-    private noticeService: TestFormDataService
+    private noticeService: TestFormDataService,
+    private dialogRef: DialogRef,
+    private dialogData: Data
   ) { }
 
   ngOnInit(): void {
@@ -29,13 +33,11 @@ export class CreateCursorComponent implements OnInit {
   }
 
   submit(value: ISpCursorDto){
-    this.route.params.subscribe(data=>{
-      value.fkSp = data['id']
-    })
+    value.fkSp = this.dialogData.data.data.id;
     this.spService.postCursor(value).subscribe(
       ()=>{
         this.noticeService.sendNotice();
-        this.form.reset();
+        this.dialogRef.closeDialog();
       },
       err =>{
         alert(err.error.message);

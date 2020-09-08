@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { ISpStructureDto, ICursors } from 'src/app/models/sp.model';
 import { SpService } from 'src/app/services/sp.service';
 import { TestFormDataService } from 'src/app/services/test-form-data.service';
 import { Subscription, Observable } from 'rxjs';
 import { DialogService } from 'simcusdi';
 import { CreateCursorComponent } from '../../create-cursor/create-cursor.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -20,7 +21,8 @@ export class MainComponent implements OnInit {
   constructor(
     private spService: SpService,
     private noticeService: TestFormDataService,
-    private dialog: DialogService
+    private dialog: DialogService,
+    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -48,11 +50,18 @@ export class MainComponent implements OnInit {
   }
 
   openCreateCursorDialog(){
-    const obj ={
-      data: 'dsadasda'
+    const config = {
+      width: '800px',
+      height: '800px'
     }
-    this.dialog.open(CreateCursorComponent,obj).afterClosed.subscribe(()=>{
-
+    console.log(this.spStructureInput.spPart.spInfo.id)
+    const obj ={
+      data: {
+        id: this.spStructureInput.spPart.spInfo.id
+      }
+    }
+    this.dialog.open(CreateCursorComponent,config,obj).afterClosed.subscribe(()=>{
+      this.cd.detectChanges();
     });
   }
 

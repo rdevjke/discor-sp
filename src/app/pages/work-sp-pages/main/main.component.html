@@ -74,7 +74,7 @@
     <ngb-tab title="Курсоры">
       <ng-template ngbTabContent>
 
-        <app-create-cursor></app-create-cursor>
+        <!-- <app-create-cursor></app-create-cursor> -->
 
         <!-- <select class="" (change)="test($event.target.value)">
           <option>Выберите курсор...</option>
@@ -83,7 +83,7 @@
 
         <p>{{cursor1}}</p> -->
 
-        <button class="btn btn-primary" (click)="openCreateCursorDialog()">Создать курсор</button>
+        <button class="btn btn-outline-primary" (click)="openCreateCursorDialog()">Создать курсор</button>
 
         <nav ngbNav #nav="ngbNav" class="nav-tabs">
           <ng-container ngbNavItem *ngFor="let cursor of spStructureInput.cursors">
