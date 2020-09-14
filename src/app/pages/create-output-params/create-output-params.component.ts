@@ -4,6 +4,7 @@ import { ISpOutputParamDto } from 'src/app/models/sp.model';
 import { SpService } from 'src/app/services/sp.service';
 import { ActivatedRoute } from '@angular/router';
 import { TestFormDataService } from 'src/app/services/test-form-data.service';
+import { DialogData, DialogRef } from 'simcusdi';
 
 @Component({
   selector: 'app-create-output-params',
@@ -16,8 +17,9 @@ export class CreateOutputParamsComponent implements OnInit {
 
   constructor(
     private spService: SpService,
-    private route: ActivatedRoute,
-    private notificated: TestFormDataService
+    private notificated: TestFormDataService,
+    private dialogRef: DialogRef,
+    private dialogData: DialogData
   ) { }
 
   ngOnInit(): void {
@@ -29,15 +31,10 @@ export class CreateOutputParamsComponent implements OnInit {
   }
 
   submit(value: ISpOutputParamDto){
-    this.route.params.subscribe(
-      p=>{
-        value.fkSp = p['id'];
-      }
-    )
-
+    value.fkSp = this.dialogData.data.id;
     this.spService.postOutputParams(value).subscribe(
-      response =>{
-        console.log(response);
+      () =>{
+        this.dialogRef.closeDialog();
         this.notificated.sendNotice();
         this.form.reset();
       },

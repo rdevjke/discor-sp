@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DialogData, DialogRef } from 'simcusdi';
 import { ISpCursorColumnDto } from 'src/app/models/sp.model';
 import { SpService } from 'src/app/services/sp.service';
 import { TestFormDataService } from 'src/app/services/test-form-data.service';
@@ -16,7 +17,9 @@ export class CreateCursorColumnComponent implements OnInit {
   constructor(
     private fb:FormBuilder,
     private spService: SpService,
-    private noticeService: TestFormDataService
+    private noticeService: TestFormDataService,
+    private dialogRef: DialogRef,
+    private dialogData: DialogData
   ) {
     this.formBuild();
   }
@@ -39,11 +42,10 @@ export class CreateCursorColumnComponent implements OnInit {
 
   submit(value:ISpCursorColumnDto){
     value.virtCol = false;
-    value.fkSpCursor = this.fkCursor;
-    console.log(value);
+    value.fkSpCursor = this.dialogData.data.id;
     this.spService.postCursorColumn(value).subscribe(
       ()=>{
-        this.form.reset();
+        this.dialogRef.closeDialog();
         this.noticeService.sendNotice();
       },
       err =>{

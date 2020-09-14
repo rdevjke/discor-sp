@@ -60,4 +60,16 @@ export class SpService {
       params: new HttpParams().set('funcVirtSpCursorColumn', ' ')
     });
   }
+
+  deleteCursorColumn(columnId: string){
+    return this.http.post(this.url+`api/sp/cursor/column/delete`, '', {
+      params: new HttpParams().set('id', columnId)
+    });
+  }
+
+  deleteCursor(cursorId: string){
+    return this.http.post(this.url+ `api/sp/cursor/delete`, '', {
+      params: new HttpParams().set('id', cursorId)
+    })
+  }
 }

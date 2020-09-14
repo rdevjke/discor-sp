@@ -3,11 +3,15 @@
     <ngb-tab title="Входные параметры">
       <ng-template ngbTabContent>
 
-        <app-create-input-params></app-create-input-params>
+        <!-- <app-create-input-params></app-create-input-params> -->
 
         <!-- <ng-container *ngIf="spStructureInput != undefined">
           <p  *ngFor="let item of spStructureInput.spPart.inputParams">{{item.nameInputSpParam}}</p>
         </ng-container> -->
+        <div class="create-button">
+          <button class="btn btn-primary" (click)="openCreateInputParamDialog()">Добавить параметр</button>
+        </div>
+
 
         <table class="table" *ngIf="spStructureInput != undefined">
           <thead class="bg-primary text-white">
@@ -41,7 +45,9 @@
       <ng-template ngbTabTitle>Выходные параметры</ng-template>
       <ng-template ngbTabContent>
 
-        <app-create-output-params></app-create-output-params>
+        <div class="create-button">
+          <button class="btn btn-primary" (click)="openCreateOutputParamDialog()">Добавить параметр</button>
+        </div>
 
         <table class="table" *ngIf="spStructureInput != undefined">
           <thead class="bg-primary text-white">
@@ -74,30 +80,10 @@
     <ngb-tab title="Курсоры">
       <ng-template ngbTabContent>
 
-        <!-- <app-create-cursor></app-create-cursor> -->
-
-        <!-- <select class="" (change)="test($event.target.value)">
-          <option>Выберите курсор...</option>
-          <option  *ngFor="let cursor of spStructureInput.cursors" value="{{cursor.cursorInfo.id}}">{{cursor.cursorInfo.name}}</option>
-        </select>
-
-        <p>{{cursor1}}</p> -->
-
-        <button class="btn btn-outline-primary" (click)="openCreateCursorDialog()">Создать курсор</button>
-
-        <nav ngbNav #nav="ngbNav" class="nav-tabs">
-          <ng-container ngbNavItem *ngFor="let cursor of spStructureInput.cursors">
-            <a ngbNavLink>{{cursor.cursorInfo.name}}</a>
-            <ng-template ngbNavContent>
-              {{cursor.cursorInfo.id}}
-              <app-cursor
-                [cursor]="cursor"
-              ></app-cursor>
-            </ng-template>
-          </ng-container>
-        </nav>
-
-        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        <app-cursors-page
+          [cursors]='spStructureInput.cursors'
+          [spId]='spStructureInput.spPart.spInfo.id'
+        ></app-cursors-page>
 
       </ng-template>
     </ngb-tab>

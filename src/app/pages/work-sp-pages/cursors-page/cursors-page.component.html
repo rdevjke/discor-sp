@@ -1,0 +1,30 @@
+<div class="create-button">
+  <button class="btn btn-primary" (click)="openCreateCursorDialog()">Добавить курсор</button>
+</div>
+
+<!-- <nav ngbNav #nav="ngbNav" class="nav-tabs">
+  <ng-container ngbNavItem *ngFor="let cursor of cursors">
+    <a ngbNavLink>{{cursor.cursorInfo.name}}</a>
+    <ng-template ngbNavContent>
+      <app-cursor-page
+      [cursor]="cursor"
+      ></app-cursor-page>
+    </ng-template>
+  </ng-container>
+</nav>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div> -->
+
+
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+  <li *ngFor="let cursor of cursors; let i = index" [ngbNavItem]="i+1">
+    <a ngbNavLink>{{cursor.cursorInfo.name}}</a>
+    <ng-template ngbNavContent>
+      <app-cursor-page
+        [cursor]="cursor"
+      ></app-cursor-page>
+    </ng-template>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>

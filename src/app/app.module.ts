@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { SpComponent } from './pages/sp/sp.component';
 import { CreateSpComponent } from './pages/create-sp/create-sp.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -16,15 +15,16 @@ import { CreateInputParamsComponent } from './pages/create-input-params/create-i
 import { InputParamComponent } from './elements/input-param/input-param.component';
 import { CreateOutputParamsComponent } from './pages/create-output-params/create-output-params.component';
 import { CreateCursorComponent } from './pages/create-cursor/create-cursor.component';
-import { CursorComponent } from './elements/cursor/cursor.component';
 import { CreateCursorColumnComponent } from './pages/create-cursor-column/create-cursor-column.component';
-import {DialogModule} from 'simcusdi';
+import { DialogModule } from 'simcusdi';
+import { CursorsPageComponent } from './pages/work-sp-pages/cursors-page/cursors-page.component';
+import { CursorPageComponent } from './pages/work-sp-pages/cursor-page/cursor-page.component';
+import { CursorCellComponent } from './elements/cursor-cell/cursor-cell.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    SpComponent,
     CreateSpComponent,
     SpElementComponent,
     WorkSpComponent,
@@ -33,8 +33,11 @@ import {DialogModule} from 'simcusdi';
     InputParamComponent,
     CreateOutputParamsComponent,
     CreateCursorComponent,
-    CursorComponent,
     CreateCursorColumnComponent,
+    CursorsPageComponent,
+    CursorPageComponent,
+    CursorCellComponent,
+
   ],
   imports: [
     BrowserModule,

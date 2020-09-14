@@ -1,11 +1,13 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ISpStructureDto, ICursors } from 'src/app/models/sp.model';
 import { SpService } from 'src/app/services/sp.service';
 import { TestFormDataService } from 'src/app/services/test-form-data.service';
 import { Subscription, Observable } from 'rxjs';
 import { DialogService } from 'simcusdi';
 import { CreateCursorComponent } from '../../create-cursor/create-cursor.component';
-import { ActivatedRoute } from '@angular/router';
+import { CreateInputParamsComponent } from '../../create-input-params/create-input-params.component';
+import { CreateOutputParamsComponent } from '../../create-output-params/create-output-params.component';
+
 
 @Component({
   selector: 'app-main',
@@ -14,15 +16,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
-  cursor1: string
-
   @Input() spStructureInput: ISpStructureDto
 
   constructor(
     private spService: SpService,
     private noticeService: TestFormDataService,
-    private dialog: DialogService,
-    private cd: ChangeDetectorRef
+    private dialog: DialogService
   ) { }
 
   ngOnInit(): void {
@@ -49,20 +48,26 @@ export class MainComponent implements OnInit {
     )
   }
 
-  openCreateCursorDialog(){
+  openCreateInputParamDialog(){
     const config = {
-      width: '800px',
-      height: '800px'
-    }
-    console.log(this.spStructureInput.spPart.spInfo.id)
+      width: '600px',
+      height: '500px'
+    };
     const obj ={
-      data: {
-        id: this.spStructureInput.spPart.spInfo.id
-      }
+      id: this.spStructureInput.spPart.spInfo.id
     }
-    this.dialog.open(CreateCursorComponent,config,obj).afterClosed.subscribe(()=>{
-      this.cd.detectChanges();
-    });
+    this.dialog.open(CreateInputParamsComponent, config, obj).afterClosed.subscribe();
+  }
+
+  openCreateOutputParamDialog(){
+    const config = {
+      width: '600px',
+      height: '500px'
+    };
+    const obj ={
+      id: this.spStructureInput.spPart.spInfo.id
+    }
+    this.dialog.open(CreateOutputParamsComponent, config, obj).afterClosed.subscribe();
   }
 
 }

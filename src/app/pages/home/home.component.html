@@ -1,1 +1,11 @@
-<p>home works!</p>
+<div class="container pt-5">
+  <button class="btn btn-primary mb-1" [routerLink]="['/create-sp']">
+    Добавить новую процедуру
+  </button>
+  <app-sp-element *ngFor="let sp of spArray"
+    [data]="sp"
+    (deleteSp)="removeSp($event)"
+  >
+
+  </app-sp-element>
+</div>

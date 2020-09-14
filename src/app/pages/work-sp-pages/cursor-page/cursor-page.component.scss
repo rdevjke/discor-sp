@@ -1,0 +1,26 @@
+.column-value{
+  border: 1px solid black;
+  width: 100px;
+  height: 50px;
+
+}
+.column-type{
+  border: 1px solid black;
+  width: 100px;
+  height: 50px;
+}
+
+.cursor-structure{
+  border-collapse: separate;
+  border-spacing: 5px;
+}
+
+.cursor-label{
+  font-size: large;
+  font-weight: bold;
+}
+
+
+table > tr > td {
+  border: none;
+}

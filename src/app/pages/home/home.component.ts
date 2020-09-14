@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { SpService } from 'src/app/services/sp.service';
+import { ISpDto } from 'src/app/models/sp.model';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private sp: SpService,
+  ) { }
 
-  ngOnInit(): void {
-  }
+spArray: ISpDto[] = []
+
+ngOnInit(): void {
+  this.fetchSp()
+}
+
+removeSp(id: string){
+  this.sp.deleteSp(id).subscribe(
+    ()=>{
+      this.fetchSp()
+    },
+    err=>{
+      alert(err.error.message)
+    }
+  )
+}
+
+fetchSp(){
+  this.sp.getAllSp().subscribe(
+    response=>{
+      this.spArray = response
+    }
+  )
+}
 
 }
