@@ -1,9 +1,9 @@
 <ng-container *ngIf="this.inputData != undefined">
-  <div class="cursor-cell cursor-cell-name" >
-    <p>{{this.inputData.name}}</p>
+  <div class="cursor-cell cursor-cell-name" placement="top" ngbTooltip="{{this.inputData.name}}">
+    <p>{{this.inputData.techName}}</p>
   </div>
 
-  <div class="cursor-cell cursor-cell-type">
+  <div class="cursor-cell cursor-cell-type" [ngClass]="{'cursor-cell-type-value':isValue}">
     <p>{{this.inputData.type}}</p>
   </div>
 </ng-container>

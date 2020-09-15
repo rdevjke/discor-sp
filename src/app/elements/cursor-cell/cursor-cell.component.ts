@@ -10,10 +10,14 @@ export class CursorCellComponent implements OnInit {
 
   @Input() inputData: ISpCursorColumnDto
 
+  isValue: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.inputData)
+    if(this.inputData.type == 'value'){
+      this.isValue =true;
+    }
   }
 
 }

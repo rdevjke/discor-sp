@@ -20,6 +20,7 @@ import { DialogModule } from 'simcusdi';
 import { CursorsPageComponent } from './pages/work-sp-pages/cursors-page/cursors-page.component';
 import { CursorPageComponent } from './pages/work-sp-pages/cursor-page/cursor-page.component';
 import { CursorCellComponent } from './elements/cursor-cell/cursor-cell.component';
+import { CreateFromBufferComponent } from './pages/create-from-buffer/create-from-buffer.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { CursorCellComponent } from './elements/cursor-cell/cursor-cell.componen
     CursorsPageComponent,
     CursorPageComponent,
     CursorCellComponent,
+    CreateFromBufferComponent,
 
   ],
   imports: [

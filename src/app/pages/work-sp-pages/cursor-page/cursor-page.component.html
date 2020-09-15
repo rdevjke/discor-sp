@@ -18,26 +18,33 @@
     </button>
   </div>
 </div>
-<hr>
-<table class="cursor-structure">
-  <tr>
-    <td class="column-value" *ngFor="let cell of cursor.cursorColumns">
-      <!-- {{cell.cursorColumnInfo.name}} -->
-      <app-cursor-cell
-        [inputData]="cell.cursorColumnInfo"
-      >
 
-      </app-cursor-cell>
-    </td>
-  </tr>
-  <!-- <tr>
-    <td class="column-type" *ngFor="let cell of cursor.cursorColumns">
-      {{cell.cursorColumnInfo.type}}
-    </td>
-  </tr> -->
-</table>
 <hr>
-<button class="btn btn-primary" (click)="openCreateColumnDialog()">Добавить колонку</button>
+
+<div class="scroll-structure">
+  <table class="cursor-structure">
+    <tr>
+      <td class="column-value" *ngFor="let cell of cursor.cursorColumns">
+        <!-- {{cell.cursorColumnInfo.name}} -->
+        <app-cursor-cell
+          [inputData]="cell.cursorColumnInfo"
+        >
+
+        </app-cursor-cell>
+      </td>
+    </tr>
+    <!-- <tr>
+      <td class="column-type" *ngFor="let cell of cursor.cursorColumns">
+        {{cell.cursorColumnInfo.type}}
+      </td>
+    </tr> -->
+  </table>
+</div>
+
+<hr>
+
+<button class="btn btn-primary m-1" (click)="openCreateColumnDialog()">Добавить колонку</button>
+<button class="btn btn-primary m-1" (click)="openImportDialog()">Добавить из буфера</button>
 <table class="table" *ngIf="cursor != undefined">
   <thead class="bg-primary text-white">
     <tr>

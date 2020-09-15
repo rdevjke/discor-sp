@@ -4,6 +4,7 @@ import { ICursors } from 'src/app/models/sp.model';
 import { SpService } from 'src/app/services/sp.service';
 import { TestFormDataService } from 'src/app/services/test-form-data.service';
 import { CreateCursorColumnComponent } from '../../create-cursor-column/create-cursor-column.component';
+import { CreateFromBufferComponent } from '../../create-from-buffer/create-from-buffer.component';
 
 @Component({
   selector: 'app-cursor-page',
@@ -56,6 +57,19 @@ export class CursorPageComponent implements OnInit {
         alert(err.error.message);
       }
     )
+  }
+
+  openImportDialog(){
+    const obj={
+      id: this.cursor.cursorInfo.id
+    };
+    const config = {
+      width: '600px',
+      height: '500px'
+    };
+    this.dialog.open(CreateFromBufferComponent, config, obj).afterClosed.subscribe(()=>{
+
+    });
   }
 
 }
