@@ -38,10 +38,10 @@ export class CreateFromBufferComponent implements OnInit {
           fkSpCursor: this.dialogData.data.id,
           virtCol: false,
           pos: +params[2],
-          techName: params[1],
-          name: params[0],
+          techName: params[1].trim(),
+          name: params[0].trim(),
           type: params[3].trim(),
-          //dataType: string,
+          dataType: params[4].trim(),
         };
         try{
           await this.pustToTheServer(column);

@@ -21,6 +21,7 @@ import { CursorsPageComponent } from './pages/work-sp-pages/cursors-page/cursors
 import { CursorPageComponent } from './pages/work-sp-pages/cursor-page/cursor-page.component';
 import { CursorCellComponent } from './elements/cursor-cell/cursor-cell.component';
 import { CreateFromBufferComponent } from './pages/create-from-buffer/create-from-buffer.component';
+import { LoaderComponent } from './elements/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CreateFromBufferComponent } from './pages/create-from-buffer/create-fro
     CursorPageComponent,
     CursorCellComponent,
     CreateFromBufferComponent,
+    LoaderComponent,
 
   ],
   imports: [

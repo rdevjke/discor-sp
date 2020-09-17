@@ -45,6 +45,7 @@ export class CreateSpComponent implements OnInit {
   ]
 
   funcDorVisiable: boolean;
+  loading: boolean = false;
 
   ngOnInit(): void {
     this.core.getCompSourseInf().subscribe(data=>{
@@ -60,7 +61,7 @@ export class CreateSpComponent implements OnInit {
     this.form = new FormGroup({
       idCompAsSourceInf: new FormControl('', [Validators.required]),
       techName: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
+      description: new FormControl('', [ Validators.maxLength(255), Validators.minLength(10), Validators.required]),
       level: new FormControl('', [Validators.required]),
       funcDor: new FormControl([],[])
     })
@@ -68,17 +69,21 @@ export class CreateSpComponent implements OnInit {
   }
 
   submitForm(){
-    const sp = this.form.value
-    console.log(sp)
-    this.spService.postSp(sp).subscribe(
-      response => {
-        console.log(response)
-        this.router.navigateByUrl('/sp')
-      },
-      err=>{
-        console.log(err)
-        alert(err.error.message)
-      }
-    )
+    if(this.form.valid){
+      this.loading = true;
+      const sp = this.form.value
+      this.spService.postSp(sp).subscribe(
+        response => {
+          console.log(response)
+          this.router.navigateByUrl('/')
+        },
+        err=>{
+          console.log(err)
+          alert(err.error.message)
+          this.loading = false;
+        }
+      )
+    }
+
   }
 }

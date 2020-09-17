@@ -1,24 +1,64 @@
 <div class="row pt-5">
   <div class="col-10 offset-1 shadow p-0">
+
+    <ng-container *ngIf="loading">
+      <!-- <div class="sp-loader">
+        <div class="loadingio-spinner-spinner-1cjgxrk2hwt"><div class="ldio-w20jmts802s">
+          <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div></div>
+      </div> -->
+      <app-loader></app-loader>
+    </ng-container>
+
     <nav class="navbar navbar-dark bg-primary">
       <a class="navbar-brand" href="#">Создание хранимой процедуры</a>
     </nav>
+
     <form [formGroup]="form" (ngSubmit)="submitForm()" id="create-sp-form" class="p-4">
         <div class="form-group">
           <label>Компонент источника информации:</label>
           <select formControlName="idCompAsSourceInf" name="compAsSourceInf" class="form-control">
             <option *ngFor="let item of arr" value="{{item.id}}">{{item.name}}</option>
           </select>
+          <!-- dispaly errors -->
+          <div
+          class="alert alert-danger mt-2"
+          *ngIf="form.controls['idCompAsSourceInf'].invalid && form.controls['idCompAsSourceInf'].touched"
+          >
+            <small>Укажите компонент источника информации!</small>
+          </div>
         </div>
 
         <div class="form-group">
           <label>Техническое имя:</label>
           <input formControlName="techName" name="techName" type="text" class="form-control" value="" >
+          <!-- dispaly errors -->
+          <div
+          class="alert alert-danger mt-2"
+          *ngIf="form.controls['techName'].invalid && form.controls['techName'].touched"
+          >
+            <small>Введите техническое имя!</small>
+          </div>
         </div>
 
         <div class="form-group">
           <label>Описание:</label>
           <textarea formControlName="description" name="description" class="form-control" rows="5"></textarea>
+           <!-- dispaly errors -->
+          <div
+            class="alert alert-danger mt-2"
+            *ngIf="form.controls['description'].invalid && form.controls['description'].touched"
+          >
+            <small *ngIf="form.get('description').errors.required" >
+              Заполните описание для хранимой процедуры!
+            </small>
+            <small *ngIf="form.get('description').errors.maxlength">
+              Описание не может превышать 255 символов!
+            </small>
+            <small *ngIf="form.get('description').errors.minlength">
+              Описание не может быть меньше 10 символов!
+            </small>
+          </div>
         </div>
 
         <div class="form-row">
@@ -27,6 +67,13 @@
             <select formControlName="level" name="level" class="form-control">
               <option *ngFor="let itm of levels" value="{{itm.id}}">{{itm.name}}</option>
             </select>
+            <!-- dispaly errors -->
+           <div
+           class="alert alert-danger mt-2"
+           *ngIf="form.controls['level'].invalid && form.controls['level'].touched"
+           >
+             <small>Укажите уровень для хранимой процедуры!</small>
+           </div>
           </div>
 
           <div class="form-group col-6" *ngIf="this.form.value.level.substr(0,3) == 'skd'">
@@ -34,7 +81,7 @@
             <input formControlName="funcDor" type="text" class="form-control" name="road">
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Добавить</button>
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid" appHelpfullTitle state="true">Добавить</button>
     </form>
   </div>
 </div>
