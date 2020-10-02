@@ -2,14 +2,26 @@
   <a class="navbar-brand" href="#">Добавление входного параметра</a>
 </nav>
 <div class="container">
-  <form [formGroup]="form" (ngSubmit)="submit(form.value)">
+  <form [formGroup]="form" (ngSubmit)="submit(form.value)" id="create-input-param-form">
     <div class="form-group">
       <label>Имя:</label>
       <input type="text" formControlName="nameInputSpParam" class="form-control">
+      <div
+        class="alert alert-danger mt-2"
+        *ngIf="form.controls['nameInputSpParam'].invalid && form.controls['nameInputSpParam'].touched"
+      >
+        <small>Укажите имя параметра!</small>
+      </div>
     </div>
     <div class="form-group">
       <label>Техническое имя:</label>
       <input type="text" formControlName="techNameInputSpParam" class="form-control">
+      <div
+        class="alert alert-danger mt-2"
+        *ngIf="form.controls['techNameInputSpParam'].invalid && form.controls['techNameInputSpParam'].touched"
+      >
+        <small>Укажите техническое имя параметра!</small>
+      </div>
     </div>
     <div class="form-group">
       <label>Тип:</label>
@@ -17,8 +29,14 @@
         <option value="varchar">Строка</option>
         <option value="integer">Число</option>
       </select>
+      <div
+        class="alert alert-danger mt-2"
+        *ngIf="form.controls['dataType'].invalid && form.controls['dataType'].touched"
+      >
+        <small>Укажите тип параметра!</small>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary">Добавить</button>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Добавить</button>
   </form>
 </div>
 

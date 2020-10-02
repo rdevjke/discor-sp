@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 spArray: ISpDto[] = []
 
 ngOnInit(): void {
-  this.fetchSp()
+  this.fetchSp();
 }
 
 removeSp(id: string){
@@ -34,6 +34,7 @@ fetchSp(){
   this.sp.getAllSp().subscribe(
     response=>{
       this.spArray = response
+      console.log(this.spArray);
     }
   )
 }

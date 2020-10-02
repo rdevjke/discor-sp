@@ -4,7 +4,7 @@
   </div>
 
   <div class="cursor-cell cursor-cell-type" [ngClass]="{'cursor-cell-type-value':isValue}">
-    <p>{{this.inputData.type}}</p>
+    <p>{{this.inputData.type | coordinatType}}</p>
   </div>
 </ng-container>
 

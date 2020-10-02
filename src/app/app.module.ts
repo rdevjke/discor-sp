@@ -22,6 +22,8 @@ import { CursorPageComponent } from './pages/work-sp-pages/cursor-page/cursor-pa
 import { CursorCellComponent } from './elements/cursor-cell/cursor-cell.component';
 import { CreateFromBufferComponent } from './pages/create-from-buffer/create-from-buffer.component';
 import { LoaderComponent } from './elements/loader/loader.component';
+import { CoordinatTypePipe } from './pipes/coordinat-type.pipe';
+import { ParamsTypePipe } from './pipes/params-type.pipe';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { LoaderComponent } from './elements/loader/loader.component';
     CursorCellComponent,
     CreateFromBufferComponent,
     LoaderComponent,
+    CoordinatTypePipe,
+    ParamsTypePipe,
 
   ],
   imports: [

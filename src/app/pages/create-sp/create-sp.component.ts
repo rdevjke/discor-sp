@@ -1,9 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CoreService } from 'src/app/services/core.service';
 import { IComponentSourseInf, ISpDto } from 'src/app/models/sp.model';
 import { SpService } from 'src/app/services/sp.service';
 import { Router } from '@angular/router';
+
+// function IdCompValidator(control: FormControl){
+
+//   let injector = Injector.create({
+//     providers:[{
+//       provide: SpService,
+//       useClass: SpService
+//     }]
+//   });
+//   let service = injector.get(SpService);
+//   let id =  control.value;
+//   if(id != '') {
+//     service.getAllSp().subscribe(res=>{
+//       res.filter(item=>{
+//         if(item.idCompAsSourceInf == +id){
+//           return {
+//             sourseInf: false
+//           }
+//         }
+//       });
+//     })
+//   }
+//   return null;
+// }
 
 @Component({
   selector: 'app-create-sp',
@@ -71,19 +95,28 @@ export class CreateSpComponent implements OnInit {
   submitForm(){
     if(this.form.valid){
       this.loading = true;
-      const sp = this.form.value
-      this.spService.postSp(sp).subscribe(
-        response => {
-          console.log(response)
-          this.router.navigateByUrl('/')
-        },
-        err=>{
-          console.log(err)
-          alert(err.error.message)
-          this.loading = false;
-        }
-      )
+      setTimeout(()=>{
+        const sp = this.form.value
+        this.spService.postSp(sp).subscribe(
+          response => {
+            console.log(response)
+            this.router.navigateByUrl('/')
+          },
+          err=>{
+            console.log(err)
+            alert(err.error.message)
+            this.loading = false;
+          }
+        )
+      }, 1500);
     }
+  }
+
+  checkIdCompAsSourceInf(id: string){
 
   }
+
+
+
+  // end of class
 }

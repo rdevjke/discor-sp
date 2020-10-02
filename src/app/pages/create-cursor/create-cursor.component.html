@@ -2,14 +2,26 @@
   <a class="navbar-brand" href="#">Добавление курсора</a>
 </nav>
 <div class="container">
-  <form [formGroup]="form" (ngSubmit)="submit(form.value)">
+  <form [formGroup]="form" (ngSubmit)="submit(form.value)" id="create-cursor-form">
     <div class="form-group">
       <label>Имя:</label>
       <input type="text" formControlName="name" class="form-control">
+      <div
+        class="alert alert-danger mt-2"
+        *ngIf="form.controls['name'].invalid && form.controls['name'].touched"
+      >
+        <small>Укажите имя курсора!</small>
+      </div>
     </div>
     <div class="form-group">
       <label>Техническое имя:</label>
       <input type="text" formControlName="techName" class="form-control">
+      <div
+        class="alert alert-danger mt-2"
+        *ngIf="form.controls['techName'].invalid && form.controls['techName'].touched"
+      >
+        <small>Укажите техническое имя курсора!</small>
+      </div>
     </div>
     <div class="form-group">
       <label>Тип:</label>
@@ -17,8 +29,14 @@
         <option value="cursor">Курсор</option>
         <option value="tempTable">Таблица</option>
       </select>
+      <div
+        class="alert alert-danger mt-2"
+        *ngIf="form.controls['type'].invalid && form.controls['type'].touched"
+      >
+        <small>Укажите тип курсора!</small>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary">Добавить</button>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Добавить</button>
   </form>
 </div>
 

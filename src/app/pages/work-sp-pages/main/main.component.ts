@@ -51,7 +51,7 @@ export class MainComponent implements OnInit {
   openCreateInputParamDialog(){
     const config = {
       width: '600px',
-      height: '500px'
+      height: '620px'
     };
     const obj ={
       id: this.spStructureInput.spPart.spInfo.id
@@ -62,7 +62,7 @@ export class MainComponent implements OnInit {
   openCreateOutputParamDialog(){
     const config = {
       width: '600px',
-      height: '500px'
+      height: '620px'
     };
     const obj ={
       id: this.spStructureInput.spPart.spInfo.id

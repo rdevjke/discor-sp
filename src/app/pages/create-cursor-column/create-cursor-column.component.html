@@ -2,18 +2,36 @@
   <a class="navbar-brand" href="#">Добавление входного параметра</a>
 </nav>
 <div class="container">
-    <form [formGroup]="form" (ngSubmit)="submit(form.value)">
+    <form [formGroup]="form" (ngSubmit)="submit(form.value)" id="create-cursor-column-form">
       <div class="form-group">
         <label>Имя:</label>
         <input type="text" formControlName="name" class="form-control">
+        <div
+        class="alert alert-danger mt-2"
+        *ngIf="form.controls['name'].invalid && form.controls['name'].touched"
+      >
+        <small>Укажите имя колонки курсора!</small>
+      </div>
       </div>
       <div class="form-group">
         <label>Техническое имя:</label>
         <input type="text" formControlName="techName" class="form-control">
+        <div
+        class="alert alert-danger mt-2"
+        *ngIf="form.controls['techName'].invalid && form.controls['techName'].touched"
+      >
+        <small>Укажите техническое имя колонки курсора!</small>
+      </div>
       </div>
       <div class="form-group">
         <label>Позиция:</label>
         <input type="text" formControlName="pos" class="form-control">
+        <div
+        class="alert alert-danger mt-2"
+        *ngIf="form.controls['pos'].invalid && form.controls['pos'].touched"
+      >
+        <small>Укажите позицию колонки курсора!</small>
+      </div>
       </div>
       <div class="form-group">
         <label>Тип:</label>
@@ -22,6 +40,12 @@
           <option value="value">Значение</option>
           <option value="other">Другое</option>
         </select>
+        <div
+        class="alert alert-danger mt-2"
+        *ngIf="form.controls['type'].invalid && form.controls['type'].touched"
+      >
+        <small>Укажите тип колонки курсора!</small>
+      </div>
       </div>
       <div class="form-group" *ngIf="form.value.type == 'keyHandbook'">
         <label>Тип данных:</label>

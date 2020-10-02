@@ -28,7 +28,7 @@
               <th scope="row">{{i+1}}</th>
               <td>{{item.nameInputSpParam}}</td>
               <td>{{item.techNameInputSpParam}}</td>
-              <td>{{item.dataType}}</td>
+              <td>{{item.dataType | paramsType}}</td>
               <td>
                 <button class="btn btn-danger" (click)="remove(item.id, 'input')">
                   <i class="fa fa-trash"></i>
@@ -64,7 +64,7 @@
               <th scope="row">{{i+1}}</th>
               <td>{{item.nameOutputSpParam}}</td>
               <td>{{item.techNameOutputSpParam}}</td>
-              <td>{{item.dataType}}</td>
+              <td>{{item.dataType | paramsType}}</td>
               <td>
                 <button class="btn btn-danger" (click)="remove(item.id, 'output')">
                   <i class="fa fa-trash"></i>
