@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CreateSpComponent } from './pages/create-sp/create-sp.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SpElementComponent } from './elements/sp-element/sp-element.component';
@@ -24,6 +24,13 @@ import { CreateFromBufferComponent } from './pages/create-from-buffer/create-fro
 import { LoaderComponent } from './elements/loader/loader.component';
 import { CoordinatTypePipe } from './pipes/coordinat-type.pipe';
 import { ParamsTypePipe } from './pipes/params-type.pipe';
+import { TokenInterceptor } from './helpers/token.interceptor';
+
+const JWT_INTERCEPTOR = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: TokenInterceptor,
+  multi: true
+}
 
 @NgModule({
   declarations: [
@@ -55,7 +62,7 @@ import { ParamsTypePipe } from './pipes/params-type.pipe';
     ReactiveFormsModule,
     DialogModule
   ],
-  providers: [],
+  providers: [JWT_INTERCEPTOR],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
